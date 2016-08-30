@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular.min.js"></script>
+
+
+</head>
+<body>
+
+	<form name="Registration">
+		<label>*First Name: </label><input name="fName" ng-model="fName"/>
+		<br/><label>*Last Name: </label><input name="lName" ng-model="lName"/>
+		<br/><label>*Email: </label><input name="uEmail" ng-model="uEmail" type="email"/>
+		<br/><label>*Username: </label><input name="username" ng-model="username"/>
+		<br/><label>*Password: </label><input type="password" name="uPassword" ng-model="Registration.user.uPassword"/>
+											<span ng-show="Registration.password.indexOf(Registration.fName.value) >= 0">Password cannot contain your first name.</span>
+											<span ng-show="Registration.password.indexOf(Registration.lName.value) >= 0">Password cannot contain your last name.</span>
+											<span ng-show="Registration.password.indexOf(Registration.username.value) >= 0">Password cannot contain your username.</span>
+		<br/><label>*Password: </label><input type="password" name="confirmPassword" ng-model="Registration.user.confirmPassword" required compare-to="Registration.user.password" />
+	</form>
+
+<span ng-show="Registration.uEmail.$touched && Registration.uEmail.$invalid">Email is required.</span>
+
+</body>
+</html>
